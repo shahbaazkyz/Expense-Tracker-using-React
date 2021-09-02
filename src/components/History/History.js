@@ -1,10 +1,11 @@
 import HistoryItem from "./HistoryItem";
 
-function History() {
+function History(prop) {
+  const {historyData} = prop ;
   return (
     <>
       <h3>History</h3>
-      <HistoryItem />
+      <HistoryItem historyData={historyData}/>
     </>
   );
 }
