@@ -20,15 +20,11 @@ const App = () => {
 
 
   const addTransaction=(transaction , amount)=>{
-    if(transaction.trim() === "" || amount.trim() === 0) {
-      alert("You must write and add amount!")
-      console.log("empty")
-    }
-    else{
+  
       const myTransaction =  [ ...historyData ,{title : transaction.toUpperCase() , amount : +amount}] 
       sethistoryData(myTransaction)
       console.log(historyData)
-    }
+    
   }
 
   const deleteTransaction =(index) => {

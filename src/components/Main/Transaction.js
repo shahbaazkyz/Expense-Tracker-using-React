@@ -5,11 +5,20 @@ function Transaction(prop) {
   const [textVal , setTextVal] =  useState("")
   const [amountVal , setamountVal] =  useState("")
 
-  function sent(e){
-    addTransaction(textVal,amountVal)
+  function sent(e) {
+    
     e.preventDefault();
-    setTextVal("")
-    setamountVal("")
+    if (textVal.trim() === "") {
+      alert("You must write and add amount!");
+      console.log("empty");
+    } else if (amountVal == 0) {
+      alert("Enter amount");
+    }
+    else {
+      addTransaction(textVal, amountVal)
+      setTextVal("")
+      setamountVal("")
+    }
   }
   return (
     <>
