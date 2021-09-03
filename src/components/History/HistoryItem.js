@@ -6,20 +6,17 @@ function HistoryItem(prop) {
         historyData.map((value , index) => {
           return(
         
-            <li className= { +(value.amount) > 0 ? "plus" : "minus" }>
+            <li className= { +(value.amount) > 0 ? "plus" : "minus" } key={index}>
               {value.title}
               <span><b>Rs:</b> {value.amount}</span>
-              <button class="delete-btn" onClick={(e) => { e.stopPropagation(); deleteTransaction(index)}}>x</button>
+              <button className="delete-btn" onClick={(e) => { e.stopPropagation(); deleteTransaction(index)}}>x</button>
               </li>
         
           )
         }
         )
       }
-      {/* <li className="minus">
-        Rent <span>-$300</span>
-        <button class="delete-btn">x</button>
-      </li> */}
+     
     </ul>
   );
 }

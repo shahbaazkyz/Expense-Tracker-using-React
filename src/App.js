@@ -4,6 +4,7 @@ import Balance from "./components/Main/Balance";
 import Income from "./components/Main/IncomeExpense";
 import Transaction from "./components/Main/Transaction";
 import History from "./components/History/History";
+import Footer from "./components/footer/footer"
 import { useState } from "react";
 
 const App = () => {
@@ -13,9 +14,9 @@ const App = () => {
   ]
 
   const [historyData , sethistoryData] = useState(history) ;
-  const [income , setIncome] = useState() ;
-  const [expense , setExpense] = useState() ;
-  const [balance , setBalance] = useState() ;
+  const [income , setIncome] = useState("") ;
+  const [expense , setExpense] = useState("") ;
+  const [balance , setBalance] = useState("") ;
 
 
   const addTransaction=(transaction , amount)=>{
@@ -36,15 +37,16 @@ const App = () => {
     })
     sethistoryData(remove) ;
   }
-
+ 
   return (
-    <>
+    <> 
       <Header />
-      <div class="container">
+      <div className="container">
         <Balance balance={balance} setBalance={setBalance} historyData ={historyData}/>
         <Income plus={income} minus={expense} setIncome={setIncome} setExpense={setExpense} historyData ={historyData}/>
         <History historyData ={historyData} deleteTransaction={deleteTransaction}/>
         <Transaction addTransaction ={addTransaction}/>
+        <Footer />
       </div>
     </>
   );

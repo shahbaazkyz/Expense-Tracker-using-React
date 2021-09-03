@@ -149,3 +149,10 @@ input[type='number'] {
 .list li:hover .delete-btn {
     opacity: 1;
 }
+
+.footer{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    font-family: monospace;
+}

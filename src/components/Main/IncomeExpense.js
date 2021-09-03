@@ -25,16 +25,16 @@ function income(prop) {
 
   return (
     <>
-      <div class="inc-exp-container">
+      <div className="inc-exp-container">
         <div>
           <h4>Income</h4>
-          <p id="money-plus" class="money plus">
+          <p id="money-plus" className="money plus">
             Rs {plus}
           </p>
         </div>
         <div>
           <h4>Expense</h4>
-          <p id="money-minus" class="money minus">
+          <p id="money-minus" className="money minus">
             Rs {minus}
           </p>
         </div>
