@@ -11,7 +11,7 @@ function Transaction(prop) {
     if (textVal.trim() === "") {
       alert("You must write and add amount!");
       console.log("empty");
-    } else if (amountVal == 0) {
+    } else if (amountVal === 0) {
       alert("Enter amount");
     }
     else {
