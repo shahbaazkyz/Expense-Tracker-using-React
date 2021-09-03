@@ -9,27 +9,42 @@ import { useState } from "react";
 const App = () => {
 
   const history = [
-    {
-      title:"rent",
-      amount:"2000",
-    },
-    {
-      title:"cash",
-      amount:"2000",
-    }
+   
   ]
 
   const [historyData , sethistoryData] = useState(history) ;
+  const [income , setIncome] = useState() ;
+  const [expense , setExpense] = useState() ;
+  const [balance , setBalance] = useState() ;
 
-  
+
+  const addTransaction=(transaction , amount)=>{
+    if(transaction.trim() === "" || amount.trim() === 0) {
+      alert("You must write and add amount!")
+      console.log("empty")
+    }
+    else{
+      const myTransaction =  [ ...historyData ,{title : transaction.toUpperCase() , amount : +amount}] 
+      sethistoryData(myTransaction)
+      console.log(historyData)
+    }
+  }
+
+  const deleteTransaction =(index) => {
+    const remove = historyData.filter((val,idx) => {
+      return idx !== index ;
+    })
+    sethistoryData(remove) ;
+  }
+
   return (
     <>
       <Header />
       <div class="container">
-        <Balance />
-        <Income />
-        <History historyData ={historyData} />
-        <Transaction />
+        <Balance balance={balance} setBalance={setBalance} historyData ={historyData}/>
+        <Income plus={income} minus={expense} setIncome={setIncome} setExpense={setExpense} historyData ={historyData}/>
+        <History historyData ={historyData} deleteTransaction={deleteTransaction}/>
+        <Transaction addTransaction ={addTransaction}/>
       </div>
     </>
   );
