@@ -1,17 +1,41 @@
-function income() {
+function income(prop) {
+  const {plus , minus , historyData , setIncome , setExpense}  = prop ;
+
+  const plusAmount = () => {
+    const amounts = historyData.map(transaction => transaction.amount);
+    const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
+  setIncome(income)
+  }
+  plusAmount();
+
+  const minusAmount =() => {
+    const amounts = historyData.map(transaction => transaction.amount);
+    const expense = (
+      amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
+      -1
+    ).toFixed(2);
+
+    setExpense(expense)
+  }
+  minusAmount();
+
   return (
     <>
       <div class="inc-exp-container">
         <div>
           <h4>Income</h4>
           <p id="money-plus" class="money plus">
-            +$0.00
+            Rs {plus}
           </p>
         </div>
         <div>
           <h4>Expense</h4>
           <p id="money-minus" class="money minus">
-            -$0.00
+            Rs {minus}
           </p>
         </div>
       </div>

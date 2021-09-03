@@ -1,15 +1,15 @@
 function HistoryItem(prop) {
-  const {historyData} = prop ;
+  const {historyData , deleteTransaction} = prop ;
   return (
     <ul id="list" className="list">
       {
         historyData.map((value , index) => {
           return(
         
-            <li className="minus">
+            <li className= { +(value.amount) > 0 ? "plus" : "minus" }>
               {value.title}
-              <span>{value.amount}</span>
-              <button class="delete-btn">x</button>
+              <span><b>Rs:</b> {value.amount}</span>
+              <button class="delete-btn" onClick={(e) => { e.stopPropagation(); deleteTransaction(index)}}>x</button>
               </li>
         
           )
