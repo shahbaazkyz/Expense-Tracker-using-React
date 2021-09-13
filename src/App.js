@@ -5,7 +5,7 @@ import Income from "./components/Main/IncomeExpense";
 import Transaction from "./components/Main/Transaction";
 import History from "./components/History/History";
 import Footer from "./components/footer/footer"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
 
@@ -33,6 +33,17 @@ const App = () => {
     })
     sethistoryData(remove) ;
   }
+
+  useEffect(() => {
+    const prevHistory = JSON.parse(localStorage.getItem("lists"));
+    if (prevHistory) {
+      sethistoryData(prevHistory)
+    }
+  }, [])
+
+  useEffect(() => {
+  localStorage.setItem("lists" , JSON.stringify(historyData))
+  }, [historyData])
  
   return (
     <> 
